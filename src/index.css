@@ -29,6 +29,7 @@
 
   --link: #c4b5fd;
   --danger-text: #fca5a5;
+  --danger-bg-10: rgba(252, 165, 165, 0.1);
   --ok-text: #6ee7b7;
   --warn-text: #fcd34d;
 
@@ -63,6 +64,7 @@
 
   --link: #6d28d9;
   --danger-text: #b91c1c;
+  --danger-bg-10: rgba(185, 28, 28, 0.08);
   --ok-text: #047857;
   --warn-text: #92400e;
 

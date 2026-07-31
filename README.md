@@ -31,6 +31,25 @@ Todo el contenido de cada módulo se puede configurar libremente con
 recordatorios: cuántos días/semanas antes avisar, o cada cuántas horas
 repetir el aviso hasta completar la tarea.
 
+## 🎤 Agendar por voz
+
+Botón de micrófono en la pantalla de inicio: lo tocás, decís algo como
+*"agéndame examen de cálculo el 20 de agosto a las 10"* o *"agéndame viaje
+a Cancún el 15 de septiembre"*, y la app arma automáticamente un deber o
+un viaje con la fecha detectada — mostrando siempre una pantalla de
+revisión antes de guardar, por si hay que corregir algo.
+
+100% gratis: la transcripción de voz usa la [Web Speech
+API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) del
+propio navegador (sin backend, sin costo por uso) y la fecha/hora se
+interpreta con [chrono-node](https://github.com/wanasit/chrono) (reglas,
+corre offline en el navegador, sin IA de por medio). Funciona bien en
+Chrome/Android; en iPhone/Safari el reconocimiento de voz puede no estar
+disponible y el botón directamente no aparece. No hay "oye Isis" con el
+micrófono siempre escuchando en segundo plano — eso requiere permisos de
+sistema operativo que ninguna app instalada desde la web puede pedir; solo
+existe el modo "tocar para hablar".
+
 ## Stack
 
 - [Vite](https://vite.dev) + React + TypeScript

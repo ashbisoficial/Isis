@@ -3,6 +3,7 @@ import { useAppData } from '../store/DataContext'
 import { getAgendaToday, getUpcoming } from '../lib/reminders'
 import { IconTile, Card, Badge } from '../components/ui'
 import { useTheme } from '../store/ThemeContext'
+import { VoiceAssistant } from '../components/VoiceAssistant'
 import dayjs from 'dayjs'
 
 const TILES = [
@@ -81,6 +82,8 @@ export default function Home() {
           </ul>
         </Card>
       )}
+
+      <VoiceAssistant />
     </div>
   )
 }
