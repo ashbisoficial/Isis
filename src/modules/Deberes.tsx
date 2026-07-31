@@ -26,7 +26,7 @@ export default function Deberes() {
         <Section
           title="Lista de deberes"
           action={
-            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
               + Agregar
             </button>
           }
@@ -66,8 +66,8 @@ function ChoreRow({ chore, onChange, onDelete }: { chore: Chore; onChange: (fn: 
       <div className="flex items-center justify-between gap-2">
         <Checkbox checked={chore.done} onChange={() => onChange((c) => ({ ...c, done: !c.done }))} label={chore.title} />
         <div className="flex shrink-0 items-center gap-2">
-          {chore.dueDate && <span className="text-xs text-white/40">{dayjs(chore.dueDate).format('D MMM')}</span>}
-          <button onClick={() => setOpen((v) => !v)} className="text-white/30">
+          {chore.dueDate && <span className="text-xs text-[var(--text-40)]">{dayjs(chore.dueDate).format('D MMM')}</span>}
+          <button onClick={() => setOpen((v) => !v)} className="text-[var(--text-30)]">
             {open ? '▲' : '▼'}
           </button>
         </div>
@@ -96,7 +96,7 @@ function NewChoreForm({ onAdd }: { onAdd: (c: Chore) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Deber">
         <Input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Ej: Lavar ropa" onKeyDown={(e) => e.key === 'Enter' && submit()} />
       </Field>

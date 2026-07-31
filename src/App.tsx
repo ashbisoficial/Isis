@@ -18,7 +18,7 @@ function App() {
   if (firebaseConfigured && loading) {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <p className="text-sm text-white/40">Cargando...</p>
+        <p className="text-sm text-[var(--text-40)]">Cargando...</p>
       </div>
     )
   }

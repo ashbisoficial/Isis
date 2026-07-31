@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../store/AuthContext'
 import { Button, Card, Field, Input } from '../components/ui'
+import isisLogo from '../assets/isis-logo.png'
 
 const ERROR_MESSAGES: Record<string, string> = {
   'auth/email-already-in-use': 'Ya existe una cuenta con ese email.',
@@ -41,9 +42,10 @@ export default function Login() {
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-6 p-6">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-white">Isis</h1>
-        <p className="text-sm text-white/50">Tu plan personal, en todos tus dispositivos</p>
+      <div className="flex flex-col items-center text-center">
+        <img src={isisLogo} alt="Isis" className="mb-2 h-24 w-24 rounded-2xl" />
+        <h1 className="text-2xl font-bold text-[var(--text-100)]">Isis</h1>
+        <p className="text-sm text-[var(--text-50)]">Tu plan personal, en todos tus dispositivos</p>
       </div>
 
       <Card className="w-full max-w-sm">
@@ -66,14 +68,14 @@ export default function Login() {
               placeholder="Mínimo 6 caracteres"
             />
           </Field>
-          {error && <p className="text-sm text-red-300">{error}</p>}
+          {error && <p className="text-sm text-[var(--danger-text)]">{error}</p>}
           <Button type="submit" disabled={loading} className="mt-1">
             {loading ? 'Un momento...' : mode === 'signup' ? 'Crear cuenta' : 'Iniciar sesión'}
           </Button>
         </form>
       </Card>
 
-      <button onClick={() => { setMode(mode === 'signin' ? 'signup' : 'signin'); setError(null) }} className="text-sm text-violet-300">
+      <button onClick={() => { setMode(mode === 'signin' ? 'signup' : 'signin'); setError(null) }} className="text-sm text-[var(--link)]">
         {mode === 'signin' ? '¿No tienes cuenta? Crea una' : '¿Ya tienes cuenta? Inicia sesión'}
       </button>
     </div>

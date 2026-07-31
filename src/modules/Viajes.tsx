@@ -26,7 +26,7 @@ export default function Viajes() {
         <Section
           title="Mis viajes"
           action={
-            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
               + Agregar
             </button>
           }
@@ -81,7 +81,7 @@ function NewTripForm({ onAdd }: { onAdd: (t: Trip) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Destino">
         <Input value={destination} onChange={(e) => setDestination(e.target.value)} placeholder="Ej: Cancún" />
       </Field>
@@ -135,8 +135,8 @@ function TripCard({
     <Card>
       <button onClick={onToggle} className="flex w-full items-center justify-between text-left">
         <div>
-          <p className="font-medium text-white">{trip.destination}</p>
-          <p className="text-xs text-white/40">
+          <p className="font-medium text-[var(--text-100)]">{trip.destination}</p>
+          <p className="text-xs text-[var(--text-40)]">
             {dayjs(trip.startDate).format('D MMM')} - {dayjs(trip.endDate).format('D MMM YYYY')}
           </p>
         </div>
@@ -146,7 +146,7 @@ function TripCard({
               {packed}/{trip.packingList.length}
             </Badge>
           )}
-          <span className="text-white/30">{expanded ? '▲' : '▼'}</span>
+          <span className="text-[var(--text-30)]">{expanded ? '▲' : '▼'}</span>
         </div>
       </button>
 
@@ -164,12 +164,12 @@ function TripCard({
           </Field>
 
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase text-white/50">Lista de equipaje</p>
+            <p className="mb-2 text-xs font-semibold uppercase text-[var(--text-50)]">Lista de equipaje</p>
             <div className="flex flex-col gap-1">
               {trip.packingList.map((p) => (
                 <div key={p.id} className="flex items-center gap-2">
                   <Checkbox checked={p.done} onChange={() => onChange((t) => ({ ...t, packingList: t.packingList.map((x) => (x.id === p.id ? { ...x, done: !x.done } : x)) }))} label={p.label} />
-                  <button onClick={() => onChange((t) => ({ ...t, packingList: t.packingList.filter((x) => x.id !== p.id) }))} className="ml-auto text-white/20">
+                  <button onClick={() => onChange((t) => ({ ...t, packingList: t.packingList.filter((x) => x.id !== p.id) }))} className="ml-auto text-[var(--text-20)]">
                     ✕
                   </button>
                 </div>
@@ -184,14 +184,14 @@ function TripCard({
           </div>
 
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase text-white/50">Itinerario</p>
+            <p className="mb-2 text-xs font-semibold uppercase text-[var(--text-50)]">Itinerario</p>
             <div className="flex flex-col gap-1">
               {trip.itinerary.map((it) => (
                 <div key={it.id} className="flex items-center justify-between text-sm">
-                  <span className="text-white/80">{it.activity}</span>
-                  <div className="flex items-center gap-2 text-xs text-white/40">
+                  <span className="text-[var(--text-80)]">{it.activity}</span>
+                  <div className="flex items-center gap-2 text-xs text-[var(--text-40)]">
                     <span>{dayjs(it.date).format('D MMM')}</span>
-                    <button onClick={() => onChange((t) => ({ ...t, itinerary: t.itinerary.filter((x) => x.id !== it.id) }))} className="text-white/20">
+                    <button onClick={() => onChange((t) => ({ ...t, itinerary: t.itinerary.filter((x) => x.id !== it.id) }))} className="text-[var(--text-20)]">
                       ✕
                     </button>
                   </div>

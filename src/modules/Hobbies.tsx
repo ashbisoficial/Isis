@@ -24,7 +24,7 @@ export default function Hobbies() {
         <Section
           title="Mis hobbies"
           action={
-            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
               + Agregar
             </button>
           }
@@ -58,7 +58,7 @@ function NewHobbyForm({ onAdd }: { onAdd: (h: Hobby) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Hobby">
         <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ej: Guitarra" />
       </Field>
@@ -92,16 +92,16 @@ function HobbyCard({ hobby, onChange, onDelete }: { hobby: Hobby; onChange: (fn:
     <Card>
       <button onClick={() => setOpen((v) => !v)} className="flex w-full items-center justify-between text-left">
         <div>
-          <p className="text-sm font-medium text-white">{hobby.name}</p>
+          <p className="text-sm font-medium text-[var(--text-100)]">{hobby.name}</p>
           {(hobby.weekday !== undefined || hobby.goal) && (
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-[var(--text-40)]">
               {hobby.weekday !== undefined ? `${WEEKDAYS[hobby.weekday]}${hobby.time ? ` ${hobby.time}` : ''}` : ''}
               {hobby.weekday !== undefined && hobby.goal ? ' · ' : ''}
               {hobby.goal}
             </p>
           )}
         </div>
-        <span className="text-white/30">{open ? '▲' : '▼'}</span>
+        <span className="text-[var(--text-30)]">{open ? '▲' : '▼'}</span>
       </button>
       {open && (
         <div className="mt-3 flex flex-col gap-2">

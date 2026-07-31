@@ -26,8 +26,8 @@ export function ReminderEditor({
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3">
-      <label className="flex items-center gap-2 text-sm font-medium text-white">
+    <div className="flex flex-col gap-3 rounded-xl border border-[var(--border-10)] bg-[var(--surface-2)] p-3">
+      <label className="flex items-center gap-2 text-sm font-medium text-[var(--text-100)]">
         <input
           type="checkbox"
           checked={value.enabled}
@@ -46,7 +46,7 @@ export function ReminderEditor({
                 key={opt.value}
                 type="button"
                 onClick={() => toggleDay(opt.value)}
-                className={`rounded-full px-3 py-1 text-xs ${active ? 'bg-violet-600 text-white' : 'bg-white/10 text-white/60'}`}
+                className={`rounded-full px-3 py-1 text-xs ${active ? 'bg-violet-600 text-[var(--text-100)]' : 'bg-[var(--surface-10)] text-[var(--text-60)]'}`}
               >
                 {opt.label}
               </button>
@@ -57,7 +57,7 @@ export function ReminderEditor({
 
       {value.enabled && mode === 'repeat' && (
         <div className="flex flex-col gap-2">
-          <label className="flex items-center gap-2 text-xs text-white/70">
+          <label className="flex items-center gap-2 text-xs text-[var(--text-70)]">
             <input
               type="checkbox"
               checked={value.repeatUntilDone ?? false}
@@ -89,7 +89,7 @@ export function ReminderEditor({
       )}
 
       {value.enabled && mode === 'time' && (
-        <p className="text-xs text-white/50">Te avisamos cerca de la hora programada, mientras la app esté abierta.</p>
+        <p className="text-xs text-[var(--text-50)]">Te avisamos cerca de la hora programada, mientras la app esté abierta.</p>
       )}
     </div>
   )

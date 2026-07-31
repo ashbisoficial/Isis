@@ -47,7 +47,7 @@ function ScheduleSection({ schedule, onChange }: { schedule: TrainingDay[]; onCh
     <Section
       title="Horarios y días"
       action={
-        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
           + Agregar
         </button>
       }
@@ -59,12 +59,12 @@ function ScheduleSection({ schedule, onChange }: { schedule: TrainingDay[]; onCh
           {sorted.map((d) => (
             <Card key={d.id} className="flex items-center justify-between !py-2.5">
               <div>
-                <p className="text-sm font-medium text-white">{d.label}</p>
-                <p className="text-xs text-white/40">
+                <p className="text-sm font-medium text-[var(--text-100)]">{d.label}</p>
+                <p className="text-xs text-[var(--text-40)]">
                   {WEEKDAYS[d.weekday]} · {d.startTime} - {d.endTime}
                 </p>
               </div>
-              <button onClick={() => onChange((s) => s.filter((x) => x.id !== d.id))} className="text-white/30">
+              <button onClick={() => onChange((s) => s.filter((x) => x.id !== d.id))} className="text-[var(--text-30)]">
                 ✕
               </button>
             </Card>
@@ -72,7 +72,7 @@ function ScheduleSection({ schedule, onChange }: { schedule: TrainingDay[]; onCh
         </div>
       )}
       {showForm && (
-        <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+        <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
           <Field label="Nombre">
             <Input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Ej: Piernas" />
           </Field>
@@ -115,7 +115,7 @@ function RoutineSection({ routines, onChange }: { routines: RoutineDay[]; onChan
     <Section
       title="Rutina de entrenamiento"
       action={
-        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
           + Día de rutina
         </button>
       }
@@ -152,21 +152,21 @@ function RoutineCard({ routine, onChange, onDelete }: { routine: RoutineDay; onC
   return (
     <Card>
       <div className="mb-2 flex items-center justify-between">
-        <p className="font-medium text-white">{routine.name}</p>
-        <button onClick={onDelete} className="text-white/30">
+        <p className="font-medium text-[var(--text-100)]">{routine.name}</p>
+        <button onClick={onDelete} className="text-[var(--text-30)]">
           ✕
         </button>
       </div>
       <div className="flex flex-col gap-1.5">
         {routine.exercises.map((e) => (
-          <div key={e.id} className="flex items-center justify-between text-sm text-white/80">
+          <div key={e.id} className="flex items-center justify-between text-sm text-[var(--text-80)]">
             <span>{e.name}</span>
-            <div className="flex items-center gap-2 text-xs text-white/40">
+            <div className="flex items-center gap-2 text-xs text-[var(--text-40)]">
               <span>
                 {e.sets}x{e.reps}
                 {e.weight ? ` · ${e.weight}` : ''}
               </span>
-              <button onClick={() => onChange((r) => ({ ...r, exercises: r.exercises.filter((x) => x.id !== e.id) }))} className="text-white/20">
+              <button onClick={() => onChange((r) => ({ ...r, exercises: r.exercises.filter((x) => x.id !== e.id) }))} className="text-[var(--text-20)]">
                 ✕
               </button>
             </div>
@@ -213,14 +213,14 @@ function BodyLogSection({ bodyLog, onChange }: { bodyLog: BodyLogEntry[]; onChan
     <Section
       title="Evolución"
       action={
-        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-violet-300">
+        <button onClick={() => setShowForm((v) => !v)} className="text-xs text-[var(--link)]">
           + Registrar
         </button>
       }
     >
       {sorted.length > 1 && (
         <Card>
-          <p className="mb-1 text-xs text-white/50">Peso (kg)</p>
+          <p className="mb-1 text-xs text-[var(--text-50)]">Peso (kg)</p>
           <SimpleLineChart points={sorted.filter((e) => e.weightKg != null).map((e) => ({ date: e.date, value: e.weightKg! }))} unit="kg" />
         </Card>
       )}
@@ -231,13 +231,13 @@ function BodyLogSection({ bodyLog, onChange }: { bodyLog: BodyLogEntry[]; onChan
         <div className="flex flex-col gap-1.5">
           {[...sorted].reverse().map((e) => (
             <Card key={e.id} className="flex items-center justify-between !py-2.5">
-              <span className="text-xs text-white/40">{dayjs(e.date).format('D MMM YYYY')}</span>
-              <div className="flex gap-3 text-sm text-white/80">
+              <span className="text-xs text-[var(--text-40)]">{dayjs(e.date).format('D MMM YYYY')}</span>
+              <div className="flex gap-3 text-sm text-[var(--text-80)]">
                 {e.weightKg != null && <span>{e.weightKg} kg</span>}
                 {e.muscleMassKg != null && <span>{e.muscleMassKg} kg músculo</span>}
                 {e.bodyFatPct != null && <span>{e.bodyFatPct}% grasa</span>}
               </div>
-              <button onClick={() => onChange((b) => b.filter((x) => x.id !== e.id))} className="text-white/20">
+              <button onClick={() => onChange((b) => b.filter((x) => x.id !== e.id))} className="text-[var(--text-20)]">
                 ✕
               </button>
             </Card>
@@ -246,7 +246,7 @@ function BodyLogSection({ bodyLog, onChange }: { bodyLog: BodyLogEntry[]; onChan
       )}
 
       {showForm && (
-        <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+        <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
           <Field label="Fecha">
             <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </Field>

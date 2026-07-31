@@ -10,19 +10,19 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.png', 'favicon-32.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Isis — Plan personal',
         short_name: 'Isis',
         description: 'Gestión de estudios, entrenamiento, alimentación, hobbies, deberes y viajes',
-        theme_color: '#7c3aed',
-        background_color: '#0f0f14',
+        theme_color: '#0b0b0f',
+        background_color: '#0b0b0f',
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },
-          { src: 'pwa-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: 'pwa-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512-maskable.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
         shortcuts: [
           {

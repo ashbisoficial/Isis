@@ -4,17 +4,17 @@ import { Link, useNavigate } from 'react-router-dom'
 export function Header({ title, subtitle, right }: { title: string; subtitle?: string; right?: ReactNode }) {
   const navigate = useNavigate()
   return (
-    <div className="sticky top-0 z-10 flex items-center gap-3 border-b border-white/10 bg-[#0f0f16]/95 px-4 py-3 backdrop-blur">
+    <div className="sticky top-0 z-10 flex items-center gap-3 border-b border-[var(--border-10)] bg-[var(--bg-95)] px-4 py-3 backdrop-blur">
       <button
         onClick={() => navigate('/')}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-lg text-white/70 active:bg-white/10"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--surface-5)] text-lg text-[var(--text-70)] active:bg-[var(--surface-10)]"
         aria-label="Volver al inicio"
       >
         ←
       </button>
       <div className="min-w-0 flex-1">
-        <h1 className="truncate text-lg font-semibold text-white">{title}</h1>
-        {subtitle && <p className="truncate text-xs text-white/50">{subtitle}</p>}
+        <h1 className="truncate text-lg font-semibold text-[var(--text-100)]">{title}</h1>
+        {subtitle && <p className="truncate text-xs text-[var(--text-50)]">{subtitle}</p>}
       </div>
       {right}
     </div>
@@ -22,14 +22,14 @@ export function Header({ title, subtitle, right }: { title: string; subtitle?: s
 }
 
 export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div className={`rounded-2xl border border-white/10 bg-white/[0.03] p-4 ${className}`}>{children}</div>
+  return <div className={`rounded-2xl border border-[var(--border-10)] bg-[var(--surface-3)] p-4 ${className}`}>{children}</div>
 }
 
 export function Section({ title, action, children }: { title: string; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-white/50">{title}</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--text-50)]">{title}</h2>
         {action}
       </div>
       {children}
@@ -40,10 +40,10 @@ export function Section({ title, action, children }: { title: string; action?: R
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-violet-600 text-white active:bg-violet-700',
-  secondary: 'bg-white/10 text-white active:bg-white/20',
-  ghost: 'bg-transparent text-white/70 active:bg-white/5',
-  danger: 'bg-red-600/20 text-red-300 active:bg-red-600/30',
+  primary: 'bg-violet-600 text-[var(--text-100)] active:bg-violet-700',
+  secondary: 'bg-[var(--surface-10)] text-[var(--text-100)] active:bg-[var(--surface-20)]',
+  ghost: 'bg-transparent text-[var(--text-70)] active:bg-[var(--surface-5)]',
+  danger: 'bg-red-600/20 text-[var(--danger-text)] active:bg-red-600/30',
 }
 
 export function Button({
@@ -77,11 +77,11 @@ export function IconTile({ to, emoji, label, color }: { to: string; emoji: strin
   return (
     <Link
       to={to}
-      className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 p-4 text-center active:scale-95 transition"
+      className="flex flex-col items-center gap-2 rounded-2xl border border-[var(--border-10)] p-4 text-center active:scale-95 transition"
       style={{ background: color }}
     >
       <span className="text-3xl">{emoji}</span>
-      <span className="text-sm font-medium text-white">{label}</span>
+      <span className="text-sm font-medium text-[var(--text-100)]">{label}</span>
     </Link>
   )
 }
@@ -89,14 +89,14 @@ export function IconTile({ to, emoji, label, color }: { to: string; emoji: strin
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span className="text-white/60">{label}</span>
+      <span className="text-[var(--text-60)]">{label}</span>
       {children}
     </label>
   )
 }
 
 const inputClass =
-  'w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 outline-none focus:border-violet-400'
+  'w-full rounded-xl border border-[var(--border-10)] bg-[var(--surface-5)] px-3 py-2 text-sm text-[var(--text-100)] placeholder:text-[var(--text-30)] outline-none focus:border-violet-400'
 
 export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${inputClass} ${props.className ?? ''}`} />
@@ -117,9 +117,9 @@ export function Checkbox({ checked, onChange, label, strike = true }: { checked:
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="h-5 w-5 shrink-0 rounded border-white/20 bg-white/5 accent-violet-600"
+        className="h-5 w-5 shrink-0 rounded border-[var(--border-20)] bg-[var(--surface-5)] accent-violet-600"
       />
-      <span className={`text-sm text-white ${checked && strike ? 'text-white/40 line-through' : ''}`}>{label}</span>
+      <span className={`text-sm text-[var(--text-100)] ${checked && strike ? 'text-[var(--text-40)] line-through' : ''}`}>{label}</span>
     </label>
   )
 }
@@ -127,21 +127,21 @@ export function Checkbox({ checked, onChange, label, strike = true }: { checked:
 export function ProgressBar({ value }: { value: number }) {
   const pct = Math.max(0, Math.min(100, value))
   return (
-    <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+    <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--surface-10)]">
       <div className="h-full rounded-full bg-violet-500 transition-all" style={{ width: `${pct}%` }} />
     </div>
   )
 }
 
 export function EmptyState({ text }: { text: string }) {
-  return <p className="rounded-xl border border-dashed border-white/10 p-6 text-center text-sm text-white/40">{text}</p>
+  return <p className="rounded-xl border border-dashed border-[var(--border-10)] p-6 text-center text-sm text-[var(--text-40)]">{text}</p>
 }
 
 export function Badge({ children, tone = 'default' }: { children: ReactNode; tone?: 'default' | 'urgent' | 'ok' }) {
   const tones = {
-    default: 'bg-white/10 text-white/70',
-    urgent: 'bg-red-500/20 text-red-300',
-    ok: 'bg-emerald-500/20 text-emerald-300',
+    default: 'bg-[var(--surface-10)] text-[var(--text-70)]',
+    urgent: 'bg-red-500/20 text-[var(--danger-text)]',
+    ok: 'bg-emerald-500/20 text-[var(--ok-text)]',
   }
   return <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${tones[tone]}`}>{children}</span>
 }

@@ -57,9 +57,9 @@ export default function Settings() {
         {firebaseConfigured && user && (
           <Section title="Cuenta">
             <Card className="flex flex-col gap-2">
-              <p className="text-sm text-white">{user.displayName || user.email}</p>
-              {user.displayName && <p className="text-xs text-white/40">{user.email}</p>}
-              <p className="text-xs text-white/40">
+              <p className="text-sm text-[var(--text-100)]">{user.displayName || user.email}</p>
+              {user.displayName && <p className="text-xs text-[var(--text-40)]">{user.email}</p>}
+              <p className="text-xs text-[var(--text-40)]">
                 {syncing ? '🔄 Sincronizando...' : '✅ Sincronizado — tus datos están disponibles en cualquier dispositivo donde inicies sesión.'}
               </p>
               <Button variant="secondary" onClick={signOut}>
@@ -71,9 +71,9 @@ export default function Settings() {
 
         {!firebaseConfigured && (
           <Section title="Cuenta">
-            <Card className="text-sm text-white/60">
+            <Card className="text-sm text-[var(--text-60)]">
               Sincronización entre dispositivos no configurada todavía — la app está usando modo local en
-              este dispositivo. Configura las variables <code className="text-white/80">VITE_FIREBASE_*</code>{' '}
+              este dispositivo. Configura las variables <code className="text-[var(--text-80)]">VITE_FIREBASE_*</code>{' '}
               (ver README) para activar cuentas y sincronización.
             </Card>
           </Section>
@@ -81,13 +81,13 @@ export default function Settings() {
 
         <Section title="Notificaciones">
           <Card className="flex flex-col gap-2">
-            <p className="text-sm text-white/70">
-              Estado: <b className="text-white">{permission === 'granted' ? 'Activadas' : permission === 'denied' ? 'Bloqueadas' : 'No configuradas'}</b>
+            <p className="text-sm text-[var(--text-70)]">
+              Estado: <b className="text-[var(--text-100)]">{permission === 'granted' ? 'Activadas' : permission === 'denied' ? 'Bloqueadas' : 'No configuradas'}</b>
             </p>
             {permission !== 'granted' && (
               <Button onClick={handleEnableNotifications}>Activar notificaciones</Button>
             )}
-            <p className="text-xs leading-relaxed text-white/40">
+            <p className="text-xs leading-relaxed text-[var(--text-40)]">
               Los recordatorios funcionan mientras la app esté abierta (o instalada y minimizada, según tu
               dispositivo). Los navegadores no permiten programar notificaciones que despierten el
               dispositivo con la app completamente cerrada — para eso hace falta la versión nativa (fase 2).
@@ -96,7 +96,7 @@ export default function Settings() {
         </Section>
 
         <Section title="Widget de pantalla de inicio">
-          <Card className="flex flex-col gap-2 text-sm text-white/70">
+          <Card className="flex flex-col gap-2 text-sm text-[var(--text-70)]">
             <p>
               Esta app es una PWA: no puede crear un widget nativo de Android/iOS. Como alternativa, instala
               la app y usa el atajo <b>"Widget de hoy"</b> (mantén presionado el ícono instalado) para
@@ -107,7 +107,7 @@ export default function Settings() {
 
         <Section title="Mis datos">
           <Card className="flex flex-col gap-2">
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-[var(--text-40)]">
               {firebaseConfigured && user
                 ? 'Tus datos viven en tu cuenta. Igual conviene tener un backup propio de vez en cuando.'
                 : 'Todo se guarda solo en este dispositivo. Haz un backup para no perder tu información.'}
@@ -117,7 +117,7 @@ export default function Settings() {
                 Exportar backup
               </Button>
               <label className="flex-1">
-                <span className="block cursor-pointer rounded-xl bg-white/10 px-4 py-2.5 text-center text-sm font-medium text-white active:bg-white/20">
+                <span className="block cursor-pointer rounded-xl bg-[var(--surface-10)] px-4 py-2.5 text-center text-sm font-medium text-[var(--text-100)] active:bg-[var(--surface-20)]">
                   Importar backup
                 </span>
                 <input type="file" accept="application/json" className="hidden" onChange={handleImport} />
@@ -126,7 +126,7 @@ export default function Settings() {
             <Button variant="danger" onClick={handleReset}>
               Borrar todos los datos
             </Button>
-            {status && <p className="text-xs text-white/60">{status}</p>}
+            {status && <p className="text-xs text-[var(--text-60)]">{status}</p>}
           </Card>
         </Section>
       </div>

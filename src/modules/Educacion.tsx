@@ -75,7 +75,7 @@ export default function Educacion() {
         <Section
           title="Semestre"
           action={
-            <button onClick={() => setAddingSemester((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setAddingSemester((v) => !v)} className="text-xs text-[var(--link)]">
               + Nuevo semestre
             </button>
           }
@@ -113,7 +113,7 @@ export default function Educacion() {
             <Section
               title="Asignaturas"
               action={
-                <button onClick={() => setAddingSubject((v) => !v)} className="text-xs text-violet-300">
+                <button onClick={() => setAddingSubject((v) => !v)} className="text-xs text-[var(--link)]">
                   + Agregar
                 </button>
               }
@@ -152,7 +152,7 @@ export default function Educacion() {
             <Section
               title="Plan de estudio personalizado"
               action={
-                <button onClick={() => setShowPlan((v) => !v)} className="text-xs text-violet-300">
+                <button onClick={() => setShowPlan((v) => !v)} className="text-xs text-[var(--link)]">
                   {showPlan ? 'Ocultar' : 'Generar'}
                 </button>
               }
@@ -162,20 +162,20 @@ export default function Educacion() {
                   <EmptyState text="Agrega evaluaciones con fecha a tus asignaturas para generar un plan." />
                 ) : (
                   <div className="flex flex-col gap-2">
-                    <p className="text-xs text-white/40">
+                    <p className="text-xs text-[var(--text-40)]">
                       Distribuido según ponderación de evaluaciones, cercanía de la fecha y temas marcados como prioritarios.
                     </p>
                     {Object.entries(planByDate).map(([date, sessions]) => (
                       <Card key={date}>
-                        <p className="mb-2 text-sm font-semibold text-white">{dayjs(date).format('dddd D MMM')}</p>
+                        <p className="mb-2 text-sm font-semibold text-[var(--text-100)]">{dayjs(date).format('dddd D MMM')}</p>
                         <ul className="flex flex-col gap-2">
                           {sessions.map((s, i) => (
                             <li key={i} className="text-sm">
                               <div className="flex items-center justify-between">
-                                <span className="font-medium text-white/90">{s.subjectName}{s.topicTitle ? ` · ${s.topicTitle}` : ''}</span>
+                                <span className="font-medium text-[var(--text-90)]">{s.subjectName}{s.topicTitle ? ` · ${s.topicTitle}` : ''}</span>
                                 <Badge>{s.minutes} min</Badge>
                               </div>
-                              <p className="text-xs text-white/40">{s.reason}</p>
+                              <p className="text-xs text-[var(--text-40)]">{s.reason}</p>
                             </li>
                           ))}
                         </ul>
@@ -231,11 +231,11 @@ function SubjectCard({
       <button onClick={onToggle} className="flex w-full items-center justify-between gap-2 text-left">
         <div className="flex items-center gap-2 min-w-0">
           <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: subject.color }} />
-          <span className="truncate font-medium text-white">{subject.name}</span>
+          <span className="truncate font-medium text-[var(--text-100)]">{subject.name}</span>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           {totalWeight > 0 && <Badge tone={totalWeight === 100 ? 'ok' : 'default'}>{totalWeight}%</Badge>}
-          <span className="text-white/40">{expanded ? '▲' : '▼'}</span>
+          <span className="text-[var(--text-40)]">{expanded ? '▲' : '▼'}</span>
         </div>
       </button>
 
@@ -251,8 +251,8 @@ function SubjectCard({
 
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase text-white/50">Temario</p>
-              <p className="text-[11px] text-white/30">Marca los temas a los que hay que dedicar más tiempo</p>
+              <p className="text-xs font-semibold uppercase text-[var(--text-50)]">Temario</p>
+              <p className="text-[11px] text-[var(--text-30)]">Marca los temas a los que hay que dedicar más tiempo</p>
             </div>
             <div className="flex flex-col gap-1">
               {subject.topics.map((t) => (
@@ -271,13 +271,13 @@ function SubjectCard({
                         topics: s.topics.map((x) => (x.id === t.id ? { ...x, priority: x.priority === 'alta' ? 'normal' : 'alta' } : x)),
                       }))
                     }
-                    className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] ${t.priority === 'alta' ? 'bg-amber-500/20 text-amber-300' : 'bg-white/5 text-white/30'}`}
+                    className={`ml-auto shrink-0 rounded-full px-2 py-0.5 text-[11px] ${t.priority === 'alta' ? 'bg-amber-500/20 text-[var(--warn-text)]' : 'bg-[var(--surface-5)] text-[var(--text-30)]'}`}
                   >
                     {t.priority === 'alta' ? '⭐ prioritario' : 'marcar prioritario'}
                   </button>
                   <button
                     onClick={() => onChange((s) => ({ ...s, topics: s.topics.filter((x) => x.id !== t.id) }))}
-                    className="shrink-0 text-white/20"
+                    className="shrink-0 text-[var(--text-20)]"
                   >
                     ✕
                   </button>
@@ -299,8 +299,8 @@ function SubjectCard({
 
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase text-white/50">Evaluaciones</p>
-              <button onClick={() => setShowEvalForm((v) => !v)} className="text-xs text-violet-300">
+              <p className="text-xs font-semibold uppercase text-[var(--text-50)]">Evaluaciones</p>
+              <button onClick={() => setShowEvalForm((v) => !v)} className="text-xs text-[var(--link)]">
                 + Agregar
               </button>
             </div>
@@ -326,8 +326,8 @@ function SubjectCard({
 
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase text-white/50">Tareas y actividades</p>
-              <button onClick={() => setShowTaskForm((v) => !v)} className="text-xs text-violet-300">
+              <p className="text-xs font-semibold uppercase text-[var(--text-50)]">Tareas y actividades</p>
+              <button onClick={() => setShowTaskForm((v) => !v)} className="text-xs text-[var(--link)]">
                 + Agregar
               </button>
             </div>
@@ -373,7 +373,7 @@ function NewEvaluationForm({ onAdd }: { onAdd: (ev: Evaluation) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Nombre">
         <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ej: Prueba 1" />
       </Field>
@@ -411,13 +411,13 @@ function EvaluationRow({
 }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="rounded-xl border border-white/10 p-3">
+    <div className="rounded-xl border border-[var(--border-10)] p-3">
       <div className="flex items-center justify-between gap-2">
         <Checkbox checked={evaluation.done} onChange={() => onChange((e) => ({ ...e, done: !e.done }))} label={evaluation.name} />
-        <div className="flex shrink-0 items-center gap-2 text-xs text-white/50">
+        <div className="flex shrink-0 items-center gap-2 text-xs text-[var(--text-50)]">
           <span>{dayjs(evaluation.date).format('D MMM')}</span>
           <Badge>{evaluation.weight}%</Badge>
-          <button onClick={() => setOpen((v) => !v)} className="text-white/30">
+          <button onClick={() => setOpen((v) => !v)} className="text-[var(--text-30)]">
             {open ? '▲' : '▼'}
           </button>
         </div>
@@ -445,7 +445,7 @@ function NewTaskForm({ onAdd }: { onAdd: (t: StudyTask) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Título">
         <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Ej: Guía de ejercicios cap. 3" />
       </Field>
@@ -460,11 +460,11 @@ function NewTaskForm({ onAdd }: { onAdd: (t: StudyTask) => void }) {
 
 function TaskRow({ task, onChange, onDelete }: { task: StudyTask; onChange: (fn: (t: StudyTask) => StudyTask) => void; onDelete: () => void }) {
   return (
-    <div className="flex items-center justify-between gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex items-center justify-between gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Checkbox checked={task.done} onChange={() => onChange((t) => ({ ...t, done: !t.done }))} label={task.title} />
-      <div className="flex shrink-0 items-center gap-2 text-xs text-white/50">
+      <div className="flex shrink-0 items-center gap-2 text-xs text-[var(--text-50)]">
         {task.dueDate && <span>{dayjs(task.dueDate).format('D MMM')}</span>}
-        <button onClick={onDelete} className="text-white/20">
+        <button onClick={onDelete} className="text-[var(--text-20)]">
           ✕
         </button>
       </div>

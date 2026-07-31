@@ -27,7 +27,7 @@ export default function Alimentacion() {
         <Section
           title="Comidas de la semana"
           action={
-            <button onClick={() => setShowMealForm((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setShowMealForm((v) => !v)} className="text-xs text-[var(--link)]">
               + Agregar
             </button>
           }
@@ -47,7 +47,7 @@ export default function Alimentacion() {
         <Section
           title="Objetivos / notas nutricionales"
           action={
-            <button onClick={() => setShowGoalForm((v) => !v)} className="text-xs text-violet-300">
+            <button onClick={() => setShowGoalForm((v) => !v)} className="text-xs text-[var(--link)]">
               + Agregar
             </button>
           }
@@ -58,10 +58,10 @@ export default function Alimentacion() {
             <div className="flex flex-col gap-1.5">
               {nutrition.goals.map((g: NutritionGoal) => (
                 <Card key={g.id} className="flex items-center justify-between !py-2.5">
-                  <span className="text-sm text-white">{g.label}</span>
+                  <span className="text-sm text-[var(--text-100)]">{g.label}</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-white/50">{g.value}</span>
-                    <button onClick={() => update((n) => ({ ...n, goals: n.goals.filter((x) => x.id !== g.id) }))} className="text-white/20">
+                    <span className="text-sm text-[var(--text-50)]">{g.value}</span>
+                    <button onClick={() => update((n) => ({ ...n, goals: n.goals.filter((x) => x.id !== g.id) }))} className="text-[var(--text-20)]">
                       ✕
                     </button>
                   </div>
@@ -88,7 +88,7 @@ function NewMealForm({ onAdd }: { onAdd: (m: Meal) => void }) {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
+    <div className="flex flex-col gap-2 rounded-xl border border-[var(--border-10)] p-3">
       <Field label="Comida">
         <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ej: Desayuno" />
       </Field>
@@ -117,8 +117,8 @@ function MealRow({ meal, onChange, onDelete }: { meal: Meal; onChange: (fn: (m: 
   return (
     <Card className="!py-2.5">
       <button onClick={() => setOpen((v) => !v)} className="flex w-full items-center justify-between">
-        <span className="text-sm text-white">{meal.name}</span>
-        <span className="text-xs text-white/40">
+        <span className="text-sm text-[var(--text-100)]">{meal.name}</span>
+        <span className="text-xs text-[var(--text-40)]">
           {WEEKDAYS[meal.weekday].slice(0, 3)} · {meal.time}
         </span>
       </button>

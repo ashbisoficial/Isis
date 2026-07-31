@@ -1,12 +1,77 @@
 @import "tailwindcss";
 
-:root {
+:root,
+[data-theme='dark'] {
   color-scheme: dark;
+
+  --bg: #0f0f16;
+  --bg-95: rgba(15, 15, 22, 0.95);
+
+  --surface-2: rgba(255, 255, 255, 0.02);
+  --surface-3: rgba(255, 255, 255, 0.03);
+  --surface-5: rgba(255, 255, 255, 0.05);
+  --surface-10: rgba(255, 255, 255, 0.1);
+  --surface-20: rgba(255, 255, 255, 0.2);
+
+  --border-5: rgba(255, 255, 255, 0.05);
+  --border-10: rgba(255, 255, 255, 0.1);
+  --border-20: rgba(255, 255, 255, 0.2);
+
+  --text-100: #ffffff;
+  --text-90: rgba(255, 255, 255, 0.9);
+  --text-80: rgba(255, 255, 255, 0.8);
+  --text-70: rgba(255, 255, 255, 0.7);
+  --text-60: rgba(255, 255, 255, 0.6);
+  --text-50: rgba(255, 255, 255, 0.5);
+  --text-40: rgba(255, 255, 255, 0.4);
+  --text-30: rgba(255, 255, 255, 0.3);
+  --text-20: rgba(255, 255, 255, 0.2);
+
+  --link: #c4b5fd;
+  --danger-text: #fca5a5;
+  --ok-text: #6ee7b7;
+  --warn-text: #fcd34d;
+
+  --scrollbar-thumb: #3f3f52;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f6f5f9;
+  --bg-95: rgba(246, 245, 249, 0.95);
+
+  --surface-2: rgba(20, 15, 40, 0.025);
+  --surface-3: rgba(20, 15, 40, 0.035);
+  --surface-5: rgba(20, 15, 40, 0.05);
+  --surface-10: rgba(20, 15, 40, 0.07);
+  --surface-20: rgba(20, 15, 40, 0.11);
+
+  --border-5: rgba(20, 15, 40, 0.06);
+  --border-10: rgba(20, 15, 40, 0.1);
+  --border-20: rgba(20, 15, 40, 0.18);
+
+  --text-100: #17141f;
+  --text-90: rgba(23, 20, 31, 0.9);
+  --text-80: rgba(23, 20, 31, 0.8);
+  --text-70: rgba(23, 20, 31, 0.7);
+  --text-60: rgba(23, 20, 31, 0.62);
+  --text-50: rgba(23, 20, 31, 0.54);
+  --text-40: rgba(23, 20, 31, 0.46);
+  --text-30: rgba(23, 20, 31, 0.38);
+  --text-20: rgba(23, 20, 31, 0.3);
+
+  --link: #6d28d9;
+  --danger-text: #b91c1c;
+  --ok-text: #047857;
+  --warn-text: #92400e;
+
+  --scrollbar-thumb: #cfccd8;
 }
 
 html, body, #root {
   height: 100%;
-  background: #0f0f16;
+  background: var(--bg);
 }
 
 body {
@@ -31,6 +96,6 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3f3f52;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }

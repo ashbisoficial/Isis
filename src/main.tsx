@@ -7,17 +7,20 @@ import './index.css'
 import App from './App.tsx'
 import { DataProvider } from './store/DataContext'
 import { AuthProvider } from './store/AuthContext'
+import { ThemeProvider } from './store/ThemeContext'
 
 dayjs.locale('es')
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <DataProvider>
-          <App />
-        </DataProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <DataProvider>
+            <App />
+          </DataProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
 )

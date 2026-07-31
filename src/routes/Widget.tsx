@@ -18,10 +18,10 @@ export default function Widget() {
     <div className="flex flex-1 flex-col gap-4 p-4">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs text-white/50">{dayjs().format('dddd D MMM')}</p>
-          <h1 className="text-lg font-bold text-white">Pendientes de hoy</h1>
+          <p className="text-xs text-[var(--text-50)]">{dayjs().format('dddd D MMM')}</p>
+          <h1 className="text-lg font-bold text-[var(--text-100)]">Pendientes de hoy</h1>
         </div>
-        <Link to="/" className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/70">
+        <Link to="/" className="rounded-full bg-[var(--surface-10)] px-3 py-1.5 text-xs text-[var(--text-70)]">
           Abrir app
         </Link>
       </div>
@@ -32,8 +32,8 @@ export default function Widget() {
         <ul className="flex flex-col gap-2">
           {today.map((item) => (
             <li key={item.key}>
-              <Link to={item.href} className="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-3">
-                <span className="truncate text-sm text-white">{item.title}</span>
+              <Link to={item.href} className="flex items-center justify-between gap-2 rounded-xl border border-[var(--border-10)] bg-[var(--surface-3)] p-3">
+                <span className="truncate text-sm text-[var(--text-100)]">{item.title}</span>
                 <Badge tone={item.severity === 'urgente' ? 'urgent' : 'default'}>{item.detail}</Badge>
               </Link>
             </li>
@@ -43,13 +43,13 @@ export default function Widget() {
 
       {upcoming.length > 0 && (
         <>
-          <p className="text-xs font-semibold uppercase tracking-wide text-white/40">Esta semana</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-40)]">Esta semana</p>
           <ul className="flex flex-col gap-2">
             {upcoming.map((item) => (
               <li key={item.key}>
-                <Link to={item.href} className="flex items-center justify-between gap-2 rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-sm">
-                  <span className="truncate text-white/70">{item.title}</span>
-                  <span className="shrink-0 text-xs text-white/40">{dayjs(item.dueDate).format('D MMM')}</span>
+                <Link to={item.href} className="flex items-center justify-between gap-2 rounded-xl border border-[var(--border-5)] bg-[var(--surface-2)] p-2.5 text-sm">
+                  <span className="truncate text-[var(--text-70)]">{item.title}</span>
+                  <span className="shrink-0 text-xs text-[var(--text-40)]">{dayjs(item.dueDate).format('D MMM')}</span>
                 </Link>
               </li>
             ))}
