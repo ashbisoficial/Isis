@@ -47,6 +47,10 @@ repetir el aviso hasta completar la tarea.
   local (`localStorage`, sin cuenta) — ver más abajo. Siempre se puede
   exportar/importar un backup en JSON desde **Ajustes**.
 
+## App publicada
+
+👉 **https://isis-asistente.web.app**
+
 ## Desarrollo
 
 ```bash
@@ -88,6 +92,21 @@ Para usarla en Netlify/Vercel u otro hosting, cargá esas mismas variables
 de entorno (`VITE_FIREBASE_*`) en la configuración del proyecto del
 hosting — nunca las subas hardcodeadas al código ni al repo (el `.env`
 real ya está en `.gitignore`).
+
+## Desplegar (Firebase Hosting)
+
+La app ya está publicada en Firebase Hosting. Para volver a desplegar
+después de hacer cambios:
+
+```bash
+npm run build
+npx firebase-tools deploy --only hosting --project isis-asistente
+```
+
+La primera vez pide loguearte (`npx firebase-tools login`) con la cuenta de
+Google dueña del proyecto. La configuración de hosting vive en
+`firebase.json` (sirve la carpeta `dist/`, con reescritura de rutas para
+que funcione el routing de React) y `.firebaserc` (proyecto por defecto).
 
 ## Widget de pantalla de inicio y notificaciones — limitaciones actuales
 
