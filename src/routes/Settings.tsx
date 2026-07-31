@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { Header, Card, Button, Section } from '../components/ui'
 import { useAppData } from '../store/DataContext'
+import { useAuth, firebaseConfigured } from '../store/AuthContext'
 import { requestNotificationPermission } from '../store/useNotificationEngine'
 import { exportAppDataJson, importAppDataJson } from '../lib/storage'
 import { emptyAppData } from '../lib/types'
 
 export default function Settings() {
-  const { data, setData } = useAppData()
+  const { data, setData, syncing } = useAppData()
+  const { user, signOut } = useAuth()
   const [permission, setPermission] = useState<NotificationPermission>(
     typeof Notification !== 'undefined' ? Notification.permission : 'denied'
   )
@@ -52,6 +54,31 @@ export default function Settings() {
     <div className="flex flex-1 flex-col">
       <Header title="Ajustes" />
       <div className="flex flex-col gap-6 p-4 pb-8">
+        {firebaseConfigured && user && (
+          <Section title="Cuenta">
+            <Card className="flex flex-col gap-2">
+              <p className="text-sm text-white">{user.displayName || user.email}</p>
+              {user.displayName && <p className="text-xs text-white/40">{user.email}</p>}
+              <p className="text-xs text-white/40">
+                {syncing ? '🔄 Sincronizando...' : '✅ Sincronizado — tus datos están disponibles en cualquier dispositivo donde inicies sesión.'}
+              </p>
+              <Button variant="secondary" onClick={signOut}>
+                Cerrar sesión
+              </Button>
+            </Card>
+          </Section>
+        )}
+
+        {!firebaseConfigured && (
+          <Section title="Cuenta">
+            <Card className="text-sm text-white/60">
+              Sincronización entre dispositivos no configurada todavía — la app está usando modo local en
+              este dispositivo. Configurá las variables <code className="text-white/80">VITE_FIREBASE_*</code>{' '}
+              (ver README) para activar cuentas y sincronización.
+            </Card>
+          </Section>
+        )}
+
         <Section title="Notificaciones">
           <Card className="flex flex-col gap-2">
             <p className="text-sm text-white/70">
@@ -80,7 +107,11 @@ export default function Settings() {
 
         <Section title="Mis datos">
           <Card className="flex flex-col gap-2">
-            <p className="text-xs text-white/40">Todo se guarda solo en este dispositivo. Hacé backup para no perder tu información.</p>
+            <p className="text-xs text-white/40">
+              {firebaseConfigured && user
+                ? 'Tus datos viven en tu cuenta. Igual conviene tener un backup propio de vez en cuando.'
+                : 'Todo se guarda solo en este dispositivo. Hacé backup para no perder tu información.'}
+            </p>
             <div className="flex gap-2">
               <Button variant="secondary" onClick={handleExport} className="flex-1">
                 Exportar backup

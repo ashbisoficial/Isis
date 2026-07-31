@@ -6,15 +6,18 @@ import dayjs from 'dayjs'
 import './index.css'
 import App from './App.tsx'
 import { DataProvider } from './store/DataContext'
+import { AuthProvider } from './store/AuthContext'
 
 dayjs.locale('es')
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <DataProvider>
-        <App />
-      </DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          <App />
+        </DataProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

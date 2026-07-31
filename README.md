@@ -3,6 +3,8 @@
 App personal (PWA) para gestionar estudios, entrenamiento, alimentación,
 hobbies, deberes y viajes desde un solo lugar, con un plan de estudio
 personalizado generado automáticamente y recordatorios configurables.
+Con cuenta propia (Firebase), los datos se sincronizan solos entre
+celular, tablet y PC.
 
 ## Módulos
 
@@ -36,9 +38,14 @@ repetir el aviso hasta completar la tarea.
 - [react-router-dom](https://reactrouter.com) para la navegación
 - [vite-plugin-pwa](https://vite-pwa-org.netlify.app) para que la app sea
   instalable (PWA)
-- Todos los datos se guardan **solo en el dispositivo** (`localStorage`) —
-  no hay backend ni cuenta. Se puede exportar/importar un backup en JSON
-  desde **Ajustes**.
+- [Firebase Auth](https://firebase.google.com/docs/auth) (email/contraseña)
+  + [Firestore](https://firebase.google.com/docs/firestore) para tener
+  cuenta propia y sincronizar los datos entre celular, tablet y PC, con
+  soporte offline (cache local en IndexedDB que sincroniza solo al volver
+  la conexión).
+- Si todavía no configuraste Firebase, la app sigue funcionando en modo
+  local (`localStorage`, sin cuenta) — ver más abajo. Siempre se puede
+  exportar/importar un backup en JSON desde **Ajustes**.
 
 ## Desarrollo
 
@@ -51,6 +58,36 @@ npm run dev
 npm run build    # build de producción
 npm run preview  # sirve el build para probarlo
 ```
+
+## Configurar Firebase (cuenta + sincronización entre dispositivos)
+
+Sin esto la app funciona igual, pero solo local en cada dispositivo (sin
+login ni sincronización). Para activar cuentas:
+
+1. Andá a la [consola de Firebase](https://console.firebase.google.com/) →
+   **Agregar proyecto** → seguí los pasos (podés desactivar Google
+   Analytics, no hace falta).
+2. En el menú lateral: **Compilación → Authentication → Comenzar** →
+   pestaña **Sign-in method** → habilitá el proveedor **Correo
+   electrónico/contraseña**.
+3. En el menú lateral: **Compilación → Firestore Database → Crear base de
+   datos** → elegí una ubicación cercana → empezá en **modo de
+   producción** (las reglas de seguridad ya están en `firestore.rules` en
+   este repo).
+4. Andá a **Reglas** dentro de Firestore Database y pegá el contenido de
+   `firestore.rules` de este repo, reemplazando lo que haya. Publicá.
+5. En **⚙️ Configuración del proyecto** (ícono de engranaje) → bajá hasta
+   **Tus apps** → ícono **`</>`** (Web) → registrá una app (el nombre no
+   importa) → copiá los valores de `firebaseConfig`.
+6. En este proyecto: `cp .env.example .env` y completá cada
+   `VITE_FIREBASE_*` con esos valores.
+7. `npm run dev` (o volvé a hacer `npm run build`) — ahora la app pide
+   crear cuenta/iniciar sesión y sincroniza sola.
+
+Para usarla en Netlify/Vercel u otro hosting, cargá esas mismas variables
+de entorno (`VITE_FIREBASE_*`) en la configuración del proyecto del
+hosting — nunca las subas hardcodeadas al código ni al repo (el `.env`
+real ya está en `.gitignore`).
 
 ## Widget de pantalla de inicio y notificaciones — limitaciones actuales
 
@@ -76,9 +113,9 @@ pantalla de inicio y notificaciones push confiables en segundo plano.
 
 ```
 src/
-  lib/            tipos, generador del plan de estudio, motor de recordatorios
-  store/          contexto de datos (localStorage) y motor de notificaciones
+  lib/            tipos, generador del plan de estudio, motor de recordatorios, config de Firebase
+  store/          contexto de auth (Firebase), contexto de datos (Firestore + cache local) y motor de notificaciones
   components/     UI compartida (botones, cards, editor de recordatorios, gráfico)
   modules/        una mini-app por categoría (Educación, Entrenamiento, etc.)
-  routes/         Home, Widget y Ajustes
+  routes/         Login, Home, Widget y Ajustes
 ```
