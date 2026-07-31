@@ -33,7 +33,7 @@ export default function Alimentacion() {
           }
         >
           {sortedMeals.length === 0 && !showMealForm ? (
-            <EmptyState text="Armá tu horario de comidas." />
+            <EmptyState text="Arma tu horario de comidas." />
           ) : (
             <div className="flex flex-col gap-1.5">
               {sortedMeals.map((m) => (

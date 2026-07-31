@@ -68,27 +68,27 @@ npm run preview  # sirve el build para probarlo
 Sin esto la app funciona igual, pero solo local en cada dispositivo (sin
 login ni sincronización). Para activar cuentas:
 
-1. Andá a la [consola de Firebase](https://console.firebase.google.com/) →
-   **Agregar proyecto** → seguí los pasos (podés desactivar Google
+1. Ve a la [consola de Firebase](https://console.firebase.google.com/) →
+   **Agregar proyecto** → sigue los pasos (puedes desactivar Google
    Analytics, no hace falta).
 2. En el menú lateral: **Compilación → Authentication → Comenzar** →
-   pestaña **Sign-in method** → habilitá el proveedor **Correo
+   pestaña **Sign-in method** → habilita el proveedor **Correo
    electrónico/contraseña**.
 3. En el menú lateral: **Compilación → Firestore Database → Crear base de
-   datos** → elegí una ubicación cercana → empezá en **modo de
+   datos** → elige una ubicación cercana → empieza en **modo de
    producción** (las reglas de seguridad ya están en `firestore.rules` en
    este repo).
-4. Andá a **Reglas** dentro de Firestore Database y pegá el contenido de
-   `firestore.rules` de este repo, reemplazando lo que haya. Publicá.
-5. En **⚙️ Configuración del proyecto** (ícono de engranaje) → bajá hasta
-   **Tus apps** → ícono **`</>`** (Web) → registrá una app (el nombre no
-   importa) → copiá los valores de `firebaseConfig`.
-6. En este proyecto: `cp .env.example .env` y completá cada
+4. Ve a **Reglas** dentro de Firestore Database y pega el contenido de
+   `firestore.rules` de este repo, reemplazando lo que haya. Publica.
+5. En **⚙️ Configuración del proyecto** (ícono de engranaje) → baja hasta
+   **Tus apps** → ícono **`</>`** (Web) → registra una app (el nombre no
+   importa) → copia los valores de `firebaseConfig`.
+6. En este proyecto: `cp .env.example .env` y completa cada
    `VITE_FIREBASE_*` con esos valores.
-7. `npm run dev` (o volvé a hacer `npm run build`) — ahora la app pide
+7. `npm run dev` (o vuelve a hacer `npm run build`) — ahora la app pide
    crear cuenta/iniciar sesión y sincroniza sola.
 
-Para usarla en Netlify/Vercel u otro hosting, cargá esas mismas variables
+Para usarla en Netlify/Vercel u otro hosting, carga esas mismas variables
 de entorno (`VITE_FIREBASE_*`) en la configuración del proyecto del
 hosting — nunca las subas hardcodeadas al código ni al repo (el `.env`
 real ya está en `.gitignore`).

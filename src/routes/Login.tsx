@@ -9,7 +9,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   'auth/invalid-credential': 'Email o contraseña incorrectos.',
   'auth/user-not-found': 'Email o contraseña incorrectos.',
   'auth/wrong-password': 'Email o contraseña incorrectos.',
-  'auth/too-many-requests': 'Demasiados intentos. Probá de nuevo en un rato.',
+  'auth/too-many-requests': 'Demasiados intentos. Prueba de nuevo en un rato.',
 }
 
 export default function Login() {
@@ -33,7 +33,7 @@ export default function Login() {
       }
     } catch (err) {
       const code = (err as { code?: string })?.code ?? ''
-      setError(ERROR_MESSAGES[code] ?? 'Algo salió mal. Probá de nuevo.')
+      setError(ERROR_MESSAGES[code] ?? 'Algo salió mal. Prueba de nuevo.')
     } finally {
       setLoading(false)
     }
@@ -74,7 +74,7 @@ export default function Login() {
       </Card>
 
       <button onClick={() => { setMode(mode === 'signin' ? 'signup' : 'signin'); setError(null) }} className="text-sm text-violet-300">
-        {mode === 'signin' ? '¿No tenés cuenta? Creá una' : '¿Ya tenés cuenta? Iniciá sesión'}
+        {mode === 'signin' ? '¿No tienes cuenta? Crea una' : '¿Ya tienes cuenta? Inicia sesión'}
       </button>
     </div>
   )

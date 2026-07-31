@@ -30,7 +30,7 @@ export default function Hobbies() {
           }
         >
           {hobbies.hobbies.length === 0 && !showForm ? (
-            <EmptyState text="Agregá tus hobbies y cuándo querés dedicarles tiempo." />
+            <EmptyState text="Agrega tus hobbies y cuándo quieres dedicarles tiempo." />
           ) : (
             <div className="flex flex-col gap-2">
               {hobbies.hobbies.map((h) => (

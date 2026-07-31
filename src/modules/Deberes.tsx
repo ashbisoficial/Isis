@@ -34,7 +34,7 @@ export default function Deberes() {
           {showForm && <NewChoreForm onAdd={(c) => { update((cs) => [...cs, c]); setShowForm(false) }} />}
         </Section>
 
-        {chores.chores.length === 0 && !showForm && <EmptyState text="Agregá deberes del hogar o externos, totalmente personalizables." />}
+        {chores.chores.length === 0 && !showForm && <EmptyState text="Agrega deberes del hogar o externos, totalmente personalizables." />}
 
         <ChoreGroup title="🏠 Hogar" chores={hogar} onChange={update} />
         <ChoreGroup title="📌 Externos" chores={externo} onChange={update} />

@@ -81,7 +81,7 @@ export default function Educacion() {
           }
         >
           {education.semesters.length === 0 && !addingSemester ? (
-            <EmptyState text="Todavía no creaste un semestre. Agregá uno para empezar." />
+            <EmptyState text="Todavía no creaste un semestre. Agrega uno para empezar." />
           ) : (
             <Select
               value={activeSemesterId ?? ''}
@@ -132,7 +132,7 @@ export default function Educacion() {
               )}
 
               {subjects.length === 0 && !addingSubject ? (
-                <EmptyState text="Agregá tus asignaturas de este semestre." />
+                <EmptyState text="Agrega tus asignaturas de este semestre." />
               ) : (
                 <div className="flex flex-col gap-3">
                   {subjects.map((s) => (
@@ -159,7 +159,7 @@ export default function Educacion() {
             >
               {showPlan && (
                 plan.length === 0 ? (
-                  <EmptyState text="Agregá evaluaciones con fecha a tus asignaturas para generar un plan." />
+                  <EmptyState text="Agrega evaluaciones con fecha a tus asignaturas para generar un plan." />
                 ) : (
                   <div className="flex flex-col gap-2">
                     <p className="text-xs text-white/40">
@@ -252,7 +252,7 @@ function SubjectCard({
           <div>
             <div className="mb-2 flex items-center justify-between">
               <p className="text-xs font-semibold uppercase text-white/50">Temario</p>
-              <p className="text-[11px] text-white/30">Marcá los temas a los que hay que dedicar más tiempo</p>
+              <p className="text-[11px] text-white/30">Marca los temas a los que hay que dedicar más tiempo</p>
             </div>
             <div className="flex flex-col gap-1">
               {subject.topics.map((t) => (

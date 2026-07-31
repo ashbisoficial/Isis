@@ -32,7 +32,7 @@ export default function Viajes() {
           }
         >
           {sorted.length === 0 && !showForm ? (
-            <EmptyState text="Agregá tu próximo viaje." />
+            <EmptyState text="Agrega tu próximo viaje." />
           ) : (
             <div className="flex flex-col gap-3">
               {sorted.map((t) => (
@@ -83,7 +83,7 @@ function NewTripForm({ onAdd }: { onAdd: (t: Trip) => void }) {
   return (
     <div className="flex flex-col gap-2 rounded-xl border border-white/10 p-3">
       <Field label="Destino">
-        <Input value={destination} onChange={(e) => setDestination(e.target.value)} placeholder="Ej: Bariloche" />
+        <Input value={destination} onChange={(e) => setDestination(e.target.value)} placeholder="Ej: Cancún" />
       </Field>
       <div className="grid grid-cols-2 gap-2">
         <Field label="Salida">

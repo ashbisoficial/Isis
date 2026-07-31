@@ -121,7 +121,7 @@ function RoutineSection({ routines, onChange }: { routines: RoutineDay[]; onChan
       }
     >
       {routines.length === 0 && !showForm ? (
-        <EmptyState text="Armá tu rutina por día (ej: Push, Pull, Piernas)." />
+        <EmptyState text="Arma tu rutina por día (ej: Push, Pull, Piernas)." />
       ) : (
         <div className="flex flex-col gap-3">
           {routines.map((r) => (
@@ -226,7 +226,7 @@ function BodyLogSection({ bodyLog, onChange }: { bodyLog: BodyLogEntry[]; onChan
       )}
 
       {sorted.length === 0 && !showForm ? (
-        <EmptyState text="Registrá tu peso y masa muscular para ver tu evolución." />
+        <EmptyState text="Registra tu peso y masa muscular para ver tu evolución." />
       ) : (
         <div className="flex flex-col gap-1.5">
           {[...sorted].reverse().map((e) => (

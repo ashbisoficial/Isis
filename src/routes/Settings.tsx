@@ -73,7 +73,7 @@ export default function Settings() {
           <Section title="Cuenta">
             <Card className="text-sm text-white/60">
               Sincronización entre dispositivos no configurada todavía — la app está usando modo local en
-              este dispositivo. Configurá las variables <code className="text-white/80">VITE_FIREBASE_*</code>{' '}
+              este dispositivo. Configura las variables <code className="text-white/80">VITE_FIREBASE_*</code>{' '}
               (ver README) para activar cuentas y sincronización.
             </Card>
           </Section>
@@ -98,9 +98,9 @@ export default function Settings() {
         <Section title="Widget de pantalla de inicio">
           <Card className="flex flex-col gap-2 text-sm text-white/70">
             <p>
-              Esta app es una PWA: no puede crear un widget nativo de Android/iOS. Como alternativa, instalá
-              la app y usá el atajo <b>"Widget de hoy"</b> (mantené presionado el ícono instalado) para
-              acceder directo a la vista compacta de pendientes de hoy, o agregala como acceso directo.
+              Esta app es una PWA: no puede crear un widget nativo de Android/iOS. Como alternativa, instala
+              la app y usa el atajo <b>"Widget de hoy"</b> (mantén presionado el ícono instalado) para
+              acceder directo a la vista compacta de pendientes de hoy, o agrégala como acceso directo.
             </p>
           </Card>
         </Section>
@@ -110,7 +110,7 @@ export default function Settings() {
             <p className="text-xs text-white/40">
               {firebaseConfigured && user
                 ? 'Tus datos viven en tu cuenta. Igual conviene tener un backup propio de vez en cuando.'
-                : 'Todo se guarda solo en este dispositivo. Hacé backup para no perder tu información.'}
+                : 'Todo se guarda solo en este dispositivo. Haz un backup para no perder tu información.'}
             </p>
             <div className="flex gap-2">
               <Button variant="secondary" onClick={handleExport} className="flex-1">
